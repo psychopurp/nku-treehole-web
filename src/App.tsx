@@ -2,13 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import routes, { IRoute } from "./router/router";
 import config from "./config";
 import React, { Suspense } from "react";
-import {
-  Backdrop,
-  CircularProgress,
-  Box,
-  createStyles,
-  makeStyles,
-} from "@material-ui/core";
+import { CircularProgress, Box, makeStyles } from "@material-ui/core";
 
 const App: React.FC = () => {
   return (
@@ -23,12 +17,13 @@ const App: React.FC = () => {
         ))}
       </ul> */}
         <Switch>
-          {routes.map((route: IRoute) => (
+          {routes.map((route: IRoute, index: number) => (
             <Route
-              exact
-              path={route.path}
-              component={route.component}
               key={config.BASENAME + route.path}
+              path={route.path}
+              exact={true}
+              strict={route.strict}
+              component={route.component}
             ></Route>
           ))}
         </Switch>

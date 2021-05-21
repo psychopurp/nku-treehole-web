@@ -11,6 +11,8 @@ export interface IRouteBase {
   meta?: IRouteMeta;
   // 是否校验权限, false 为不校验, 不存在该属性或者为true 为校验, 子路由会继承父路由的 auth 属性
   auth?: boolean;
+  exact?: boolean;
+  strict?: boolean;
 }
 
 export interface IRouteMeta {
