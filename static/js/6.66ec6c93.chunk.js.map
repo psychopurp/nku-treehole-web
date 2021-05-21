@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/Home/index.tsx"],"names":["Home"],"mappings":"8IAIeA,UAJf,WACE,OAAO","file":"static/js/6.66ec6c93.chunk.js","sourcesContent":["function Home() {\n  return <div>Home</div>;\n}\n\nexport default Home;\n"],"sourceRoot":""}

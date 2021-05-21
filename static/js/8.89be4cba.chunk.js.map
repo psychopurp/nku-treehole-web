@@ -1,0 +1,1 @@
+{"version":3,"sources":["pages/Register/index.tsx"],"names":["Register"],"mappings":"8IAIeA,UAJf,WACE,OAAO","file":"static/js/8.89be4cba.chunk.js","sourcesContent":["function Register() {\n  return <div>Register</div>;\n}\n\nexport default Register;\n"],"sourceRoot":""}
