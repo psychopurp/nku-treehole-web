@@ -24,7 +24,7 @@ export interface Config {
 
 const AppConfig: Config = {
   // react-router basename
-  BASENAME: "/nku-treehole",
+  BASENAME: "/",
 
   // 请求成功状态码
   SUCCESS_CODE: 200,
