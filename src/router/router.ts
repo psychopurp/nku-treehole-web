@@ -29,7 +29,7 @@ export interface IRoute extends IRouteBase {
 const routes: IRoute[] = [
   {
     path: "/",
-    component: React.lazy(() => import("../pages/Login")),
+    component: React.lazy(() => import("../pages/Welcome")),
     redirect: "/Home",
     children: [
       { path: "/home", component: React.lazy(() => import("../pages/Home")) },
@@ -42,6 +42,10 @@ const routes: IRoute[] = [
   {
     path: "/register",
     component: React.lazy(() => import("../pages/Register")),
+  },
+  {
+    path: "/welcome",
+    component: React.lazy(() => import("../pages/Welcome")),
   },
 ];
 

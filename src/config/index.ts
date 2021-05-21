@@ -51,7 +51,7 @@ const AppConfig: Config = {
   colorWeak: false,
 
   // 项目名称
-  title: "React Ant Admin",
+  title: "NKU Treehole",
 
   // logo
 };

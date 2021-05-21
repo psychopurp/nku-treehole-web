@@ -11,9 +11,9 @@ import {
   Link,
   Box,
 } from "@material-ui/core";
-
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles(({ palette, spacing }: Theme) =>
   createStyles({
@@ -50,11 +50,13 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
 
 export default function Login() {
   const classes = useStyles();
+  let history = useHistory();
+
   return (
     <Grid container className={classes.root}>
       <CssBaseline />
       <Grid item xs={false} sm={2} md={7} className={classes.image} />
-      <Grid item xs={12} sm={10} md={2} component={Paper} elevation={6} square>
+      <Grid item xs={12} sm={10} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
@@ -73,7 +75,6 @@ export default function Login() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
             />
             <TextField
               variant="outlined"
@@ -102,12 +103,24 @@ export default function Login() {
 
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link
+                  component="button"
+                  variant="body2"
+                  onClick={() => {
+                    history.push("/welcome");
+                  }}
+                >
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/register" variant="body2">
+                <Link
+                  component="button"
+                  variant="body2"
+                  onClick={() => {
+                    history.push("/register");
+                  }}
+                >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
