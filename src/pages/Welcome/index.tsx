@@ -26,7 +26,7 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
   })
 );
 
-const Welcome: React.FC = () => {
+export default function Welcome() {
   const classes = useStyles();
   let history = useHistory();
 
@@ -58,6 +58,4 @@ const Welcome: React.FC = () => {
       </Grid>
     </Grid>
   );
-};
-
-export default Welcome;
+}

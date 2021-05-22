@@ -4,16 +4,25 @@ import {
   Paper,
   Avatar,
   Typography,
-  FormControlLabel,
   TextField,
   Button,
-  Checkbox,
   Link,
   Box,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import CheckIcon from "@material-ui/icons/Check";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { apiUserLogin, UserLoginData } from "../../api/userService";
+import useUserModel from "../../store/useUserModel";
+import { useRequest } from "ahooks";
+import noticeService, {
+  useNoticeService,
+} from "../../components/NoticeService";
+import Alert from "@material-ui/lab/Alert";
+import { Snackbar, SnackbarProps } from "@material-ui/core";
+import CustomSnackBar from "../../components/CustomSnackBar";
 
 const useStyles = makeStyles(({ palette, spacing }: Theme) =>
   createStyles({
@@ -41,6 +50,7 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
     form: {
       width: "100%", // Fix IE 11 issue.
       marginTop: spacing(1),
+      // backgroundColor: "yellow",
     },
     submit: {
       margin: spacing(3, 0, 2),
@@ -48,9 +58,77 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
   })
 );
 
+const useStyles2 = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: "80vw",
+      marginBottom: theme.spacing(2),
+    },
+  })
+);
+
+interface InputForm {
+  email: string;
+  password: string;
+}
+
 export default function Login() {
   const classes = useStyles();
-  let history = useHistory();
+  const history = useHistory();
+  const notice = useNoticeService();
+
+  const { login } = useUserModel();
+  const [form, setForm] = useState<InputForm>({ email: "", password: "" });
+  const { run } = useRequest(apiUserLogin, {
+    manual: true,
+    onSuccess: ({ data }, params: [data: UserLoginData]) => {
+      console.log(data, params);
+      login(data);
+      // history.push("/home");
+    },
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
+  // const [open, setOpen] = useState<boolean>(true);
+
+  const classes2 = useStyles2();
+  const onClick = () => {
+    // run({
+    //   account: form.email,
+    //   password: form.password,
+    // });
+
+    notice({
+      type: "SnackBar",
+      snackBarOptions: CustomSnackBar({}),
+    });
+
+    // noticeService.showSnackBar((closer) => {
+    //   return (
+    //     <Snackbar
+    //       open={open}
+    //       autoHideDuration={1000}
+    //       onClose={(event?: React.SyntheticEvent, reason?: string) => {
+    //         console.log(event, reason);
+    //         // setOpen(false);
+    //       }}
+    //     >
+    //       <Alert
+    //         severity="success"
+    //         onClose={(event?: React.SyntheticEvent, reason?: string) => {
+    //           console.log(event, reason);
+    //           // setOpen(false);
+    //           closer();
+    //         }}
+    //       >
+    //         This is a success message!
+    //       </Alert>
+    //     </Snackbar>
+    //   );
+    // });
+  };
 
   return (
     <Grid container className={classes.root}>
@@ -65,7 +143,7 @@ export default function Login() {
             Sign in
           </Typography>
 
-          <form className={classes.form} noValidate>
+          <div className={classes.form}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -73,30 +151,34 @@ export default function Login() {
               fullWidth
               id="email"
               label="Email Address"
-              name="email"
               autoComplete="email"
+              value={form.email}
+              onChange={(event) => {
+                form.email = event.target.value;
+                setForm({ ...form });
+              }}
             />
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
-              name="password"
               label="Password"
               type="password"
               id="password"
               autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              value={form.password}
+              onChange={(event) => {
+                form.password = event.target.value;
+                setForm({ ...form });
+              }}
             />
             <Button
-              type="submit"
               fullWidth
               variant="contained"
               color="primary"
               className={classes.submit}
+              onClick={onClick}
             >
               Sign In
             </Button>
@@ -125,10 +207,11 @@ export default function Login() {
                 </Link>
               </Grid>
             </Grid>
-            <Box mt={5}>
-              <Copyright />{" "}
-            </Box>
-          </form>
+          </div>
+
+          <Box mt={5}>
+            <Copyright />{" "}
+          </Box>
         </div>
       </Grid>
     </Grid>

@@ -1,0 +1,15 @@
+{
+  "userLogin": {
+    "code": 200,
+    "msg": "",
+    "data": {
+      "id": "111",
+      "name": "jack",
+      "sex": "男",
+      "avatar": "string ",
+      "phone": "string",
+      "level": 0,
+      "token": "tok"
+    }
+  }
+}

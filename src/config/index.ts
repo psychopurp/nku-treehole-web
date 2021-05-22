@@ -33,7 +33,7 @@ const AppConfig: Config = {
   LOGIN_EXPIRE: 400,
 
   // 统一请求地址
-  API_URL: "https://www.landluck.com.cn/react-ant-admin-api",
+  API_URL: "http://localhost:7788/treehole-api",
 
   // 本地存储token 的key
   TOKEN_KEY: "token",

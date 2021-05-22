@@ -5,14 +5,15 @@ import App from "./App";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./config/theme";
 import { CssBaseline } from "@material-ui/core";
+import { NoticeServiceProvider } from "./components/NoticeService";
 
 ReactDOM.render(
-  <React.StrictMode>
+  <NoticeServiceProvider>
     <ThemeProvider theme={theme}>
       {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
       <CssBaseline />
       <App />
     </ThemeProvider>
-  </React.StrictMode>,
+  </NoticeServiceProvider>,
   document.getElementById("root")
 );

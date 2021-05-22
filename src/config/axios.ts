@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
-import AppConfig from "../config";
+import AppConfig from ".";
 import { getToken } from "../utils/cookie";
 
 export interface ResponseData<T> {
@@ -15,7 +15,9 @@ axios.defaults.headers = {
 };
 
 axios.defaults.baseURL =
-  process.env.NODE_ENV === "production" ? AppConfig.API_URL : "";
+  process.env.NODE_ENV === "production"
+    ? AppConfig.API_URL
+    : "http://localhost:9000/";
 
 // 添加请求拦截器
 axios.interceptors.request.use(
@@ -33,6 +35,7 @@ axios.interceptors.request.use(
 // 添加响应拦截器，拦截登录过期或者没有权限
 axios.interceptors.response.use(
   (response: AxiosResponse<ResponseData<any>>) => {
+    console.log(response);
     if (!response.data) {
       return Promise.resolve(response);
     }
@@ -76,6 +79,6 @@ axios.interceptors.response.use(
 );
 
 // 统一发起请求的函数
-export function request<T>(options: AxiosRequestConfig) {
+export default function request<T>(options: AxiosRequestConfig) {
   return axios.request<T>(options);
 }

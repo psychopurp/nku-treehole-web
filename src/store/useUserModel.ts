@@ -27,7 +27,7 @@ const defaultUser: UserState = {
   sex: "男",
   birthday: null,
   avatar: "",
-  phone: "110",
+  phone: "",
   level: 0,
   token: getToken(),
   ...localUser,
