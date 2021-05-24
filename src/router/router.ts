@@ -1,4 +1,5 @@
 import React from "react";
+import { Route, Switch } from "react-router-dom";
 
 export interface IRouteBase {
   // 路由路径
@@ -25,30 +26,46 @@ export interface IRoute extends IRouteBase {
 
 /**
  * routes 第一级路由负责最外层的路由渲染，比如 userLayout 和 Layout 的区分
- * 所有系统内部存在的页面路由都要在此地申明引入，而菜单栏的控制是支持异步请求控制的
+ * 所有系统内部存在的页面路由都要在此地申明引入
  */
 
 const routes: IRoute[] = [
   {
-    path: "/",
-    component: React.lazy(() => import("../pages/Welcome")),
-    redirect: "/Home",
+    path: "/system",
+    component: React.lazy(() => import("../layout/SystemLayout")),
+    redirect: "/system/login",
     children: [
-      { path: "/home", component: React.lazy(() => import("../pages/Home")) },
+      {
+        path: "/system/login",
+        component: React.lazy(() => import("../pages/Login")),
+      },
+      {
+        path: "/system/register",
+        component: React.lazy(() => import("../pages/Profile")),
+      },
     ],
-  },
-  {
-    path: "/login",
-    component: React.lazy(() => import("../pages/Login")),
-  },
-  {
-    path: "/register",
-    component: React.lazy(() => import("../pages/Register")),
   },
   {
     path: "/welcome",
     component: React.lazy(() => import("../pages/Welcome")),
   },
+  {
+    path: "/",
+    component: React.lazy(() => import("../layout/index")),
+    redirect: "/index/home",
+    children: [
+      {
+        path: "/index/home",
+        component: React.lazy(() => import("../pages/Home")),
+      },
+      {
+        path: "/index/profile",
+        component: React.lazy(() => import("../pages/Register")),
+      },
+    ],
+  },
 ];
 
 export default routes;
+
+export const renderRoutes = (routeList: IRoute[]) => {};

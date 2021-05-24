@@ -9,7 +9,8 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "mock": "node_modules/.bin/json-server --routes mock/routes.json --watch mock/user.json --port 9000 --watch ",
-    "mockdev": "npm run mock & npm run start"
+    "mockdev": "npm run mock & npm run start",
+    "lint": "eslint src --fix"
   },
   "homepage": "https://psychopurp.github.io/nku-treehole-web",
   "proxy": "http://localhost:9000/",
@@ -132,7 +133,7 @@
     "css-loader": "4.3.0",
     "dotenv": "8.2.0",
     "dotenv-expand": "5.1.0",
-    "eslint": "^7.11.0",
+    "eslint": "^7.27.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",
     "eslint-plugin-import": "^2.22.1",

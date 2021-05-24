@@ -26,12 +26,12 @@ const useStyles = makeStyles(({ palette, spacing }: Theme) =>
   })
 );
 
-export default function Welcome() {
+const Welcome: React.FC = () => {
   const classes = useStyles();
   let history = useHistory();
 
   function enterAppButton() {
-    history.push("/login");
+    history.push("/system/login");
   }
 
   return (
@@ -58,4 +58,6 @@ export default function Welcome() {
       </Grid>
     </Grid>
   );
-}
+};
+
+export default Welcome;

@@ -1,54 +1,34 @@
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
-import routes, { IRoute } from "./router/router";
+import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { layoutRoutes, businessRoutes, systemRoutes } from "./router/utils";
 import config from "./config";
 import React, { Suspense } from "react";
-import { CircularProgress, Box, makeStyles } from "@material-ui/core";
+import Loading from "./components/Loading";
+import { IRoute } from "./router/router";
 
 const App: React.FC = () => {
   return (
     <Suspense fallback={Loading()}>
       <Router basename={config.BASENAME}>
         {/* <ul>
-        {routes.map((route: IRoute) => (
-          <li>
-            {" "}
-            <Link to={route.path}>{route.path} </Link>
-          </li>
-        ))}
-      </ul> */}
+          {layoutRoutes.map((route: IRoute, i) => (
+            <li key={i}>
+              {" "}
+              <Link to={route.path}>{route.path} </Link>
+            </li>
+          ))}
+        </ul> */}
         <Switch>
-          {routes.map((route: IRoute, index: number) => (
+          {layoutRoutes.map((route: IRoute, i: number) => (
             <Route
-              key={config.BASENAME + route.path}
+              exact={route.exact}
+              key={route.path}
               path={route.path}
-              exact={true}
-              strict={route.strict}
               component={route.component}
             ></Route>
           ))}
         </Switch>
       </Router>
     </Suspense>
-  );
-};
-
-const useStyles = makeStyles({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    // backgroundColor: "#fff333",
-    height: "80vh",
-  },
-});
-
-const Loading = (): React.ReactElement => {
-  const classes = useStyles();
-  return (
-    <Box className={classes.root}>
-      <CircularProgress />
-    </Box>
   );
 };
 
