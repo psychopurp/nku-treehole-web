@@ -9,13 +9,10 @@ import {
 import CheckIcon from "@material-ui/icons/Check";
 import styles from "./index.module.less";
 
-const CustomSnackBar = ({
-  msg = "Success !",
-  duration = 600,
-}: {
-  msg?: string;
-  duration?: number;
-}): SnackbarProps => {
+const CustomSnackBar = (
+  msg: string = "Success !",
+  duration: number = 600
+): SnackbarProps => {
   return {
     autoHideDuration: duration,
     anchorOrigin: { vertical: "bottom", horizontal: "center" },
