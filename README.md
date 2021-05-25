@@ -4,7 +4,7 @@ a H5 web frontend for NKU treehole.
 
 ## 介绍
 
-南开树洞 APP
+南开树洞 APP H5 端
 
 ## 规划
 
