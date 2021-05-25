@@ -1,2 +1,0 @@
-(this["webpackJsonpnku-treehole-web"]=this["webpackJsonpnku-treehole-web"]||[]).push([[6],{131:function(e,t,n){"use strict";n.r(t);var r=n(7);t.default=function(){return Object(r.jsx)("div",{children:"Home"})}}}]);
-//# sourceMappingURL=6.66ec6c93.chunk.js.map
