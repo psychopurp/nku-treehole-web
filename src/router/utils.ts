@@ -39,7 +39,7 @@ export function flattenRoute(
 
 function getLayoutRoutes(): IRoute[] {
   let r = flattenRoute(routes, false, false);
-  return flattenRoute(routes, false, false);
+  return r;
 }
 
 function getSystemRoutes(): IRoute[] {

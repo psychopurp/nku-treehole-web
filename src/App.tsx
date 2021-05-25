@@ -1,5 +1,5 @@
-import { HashRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { layoutRoutes, businessRoutes, systemRoutes } from "./router/utils";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { layoutRoutes } from "./router/utils";
 import config from "./config";
 import React, { Suspense } from "react";
 import Loading from "./components/Loading";

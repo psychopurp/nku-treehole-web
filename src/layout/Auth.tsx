@@ -3,6 +3,7 @@ import { IRoute } from "../router/router";
 import { getToken } from "../utils/cookie";
 import config from "../config/index";
 import { memo } from "react";
+import { Route } from "react-router-dom";
 
 export interface AuthProps {
   route: IRoute;
@@ -31,6 +32,24 @@ const Auth: React.FC<AuthProps> = ({ route, children }) => {
   }
 
   return <>{children}</>;
+};
+
+export const renderRouteList = (routes: IRoute[]) => {
+  return routes.map((route) => {
+    const { component: Component } = route;
+    return (
+      <Route
+        key={route.path}
+        exact={route.path !== "/*"}
+        path={route.path}
+        render={(props) => (
+          <Auth {...props} route={route}>
+            <Component {...props} />
+          </Auth>
+        )}
+      ></Route>
+    );
+  });
 };
 
 export default memo(Auth);

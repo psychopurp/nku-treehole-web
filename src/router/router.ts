@@ -1,6 +1,4 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-
 export interface IRouteBase {
   // 路由路径
   path: string;
@@ -60,7 +58,7 @@ const routes: IRoute[] = [
       },
       {
         path: "/index/profile",
-        component: React.lazy(() => import("../pages/Register")),
+        component: React.lazy(() => import("../pages/Profile")),
       },
     ],
   },

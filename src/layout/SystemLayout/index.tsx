@@ -1,32 +1,10 @@
 import React, { Suspense, useMemo } from "react";
 import Loading from "../../components/Loading";
-import { Route, Switch } from "react-router-dom";
-import { businessRoutes, systemRoutes } from "../../router/utils";
-import { IRoute } from "../../router/router";
-import {
-  CssBaseline,
-  Grid,
-  Paper,
-  Avatar,
-  Typography,
-  TextField,
-  Button,
-  Link,
-  Box,
-  Backdrop,
-  CircularProgress,
-} from "@material-ui/core";
-import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { systemRoutes } from "../../router/utils";
+import { CssBaseline, Grid, Paper } from "@material-ui/core";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { useHistory } from "react-router-dom";
-import { useRef } from "react";
-import { apiUserLogin, UserLoginData } from "../../api/userService";
-import useUserModel from "../../store/useUserModel";
-import { useRequest } from "ahooks";
-import { useNoticeService } from "../../components/NoticeService";
-import CustomSnackBar from "../../components/CustomSnackBar";
-import Auth from "../Auth";
-import { renderRouteList } from "../index";
+import { renderRouteList } from "../Auth";
+import { Switch } from "react-router-dom";
 
 const useStyles = makeStyles(({ palette, spacing, zIndex }: Theme) =>
   createStyles({

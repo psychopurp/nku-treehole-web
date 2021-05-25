@@ -1,7 +1,5 @@
 import {
-  CssBaseline,
   Grid,
-  Paper,
   Avatar,
   Typography,
   TextField,
@@ -82,10 +80,12 @@ const Login: React.FC = () => {
   });
 
   const onClick = () => {
-    run({
-      account: form.current.email,
-      password: form.current.password,
-    });
+    history.push("/home");
+
+    // run({
+    //   account: form.current.email,
+    //   password: form.current.password,
+    // });
   };
 
   return (
