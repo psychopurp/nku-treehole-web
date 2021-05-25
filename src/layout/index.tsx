@@ -22,13 +22,12 @@ const IndexLayout: React.FC = () => {
       <MainRoutes />
 
       <BottomNavigation
+        showLabels
         value={value}
         onChange={(event: React.ChangeEvent<{}>, newValue: string) => {
-          console.log(newValue);
           history.push(newValue);
           setValue(newValue);
         }}
-        showLabels
         className={styles.bottomNavigation}
       >
         <BottomNavigationAction
