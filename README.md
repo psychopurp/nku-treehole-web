@@ -38,3 +38,9 @@ npm run start
 ```bash
 npm run mockdev
 ```
+
+## 部署
+
+```bash
+npm run deploy
+```
