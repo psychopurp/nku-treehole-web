@@ -1,5 +1,5 @@
 {
-  "userLogin": {
+  "login": {
     "code": 200,
     "msg": "",
     "data": {
@@ -10,6 +10,45 @@
       "phone": "string",
       "level": 0,
       "token": "tok"
+    }
+  },
+
+  "register": {
+    "code": 200,
+    "msg": "",
+    "data": {
+      "id": "111",
+      "name": "jack",
+      "sex": "男",
+      "avatar": "string ",
+      "phone": "string",
+      "level": 0,
+      "token": "tok"
+    }
+  },
+  "createPost": {
+    "code": 200,
+    "msg": "",
+    "data": true
+  },
+
+  "getPosts": {
+    "code": 200,
+    "msg": "",
+    "data": {
+      "list": [
+        {
+          "postId": 1,
+          "avatar": "https://source.unsplash.com/random",
+          "userName": "jack",
+          "userId": "13236247347",
+          "createAt": "2021 05/24 12:14:02",
+          "content": "hello world"
+        }
+      ],
+      "page": 0,
+      "limit": 20,
+      "total": 1
     }
   }
 }

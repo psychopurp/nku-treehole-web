@@ -19,7 +19,9 @@ const IndexLayout: React.FC = () => {
 
   return (
     <div className={styles.root}>
-      <MainRoutes />
+      <div style={{ backgroundColor: "Gray", height: "100%" }}>
+        <MainRoutes />
+      </div>
 
       <BottomNavigation
         showLabels
@@ -40,6 +42,9 @@ const IndexLayout: React.FC = () => {
           // size="medium"
           color="primary"
           aria-label="add"
+          onClick={() => {
+            history.push("/post");
+          }}
         >
           <AddIcon />
         </Fab>

@@ -18,6 +18,7 @@ import useUserModel from "../../store/useUserModel";
 import { useRequest } from "ahooks";
 import { useNoticeService } from "../../components/NoticeService";
 import CustomSnackBar from "../../components/CustomSnackBar";
+import Copyright from "../../components/Copyright";
 
 const useStyles = makeStyles(({ palette, spacing, zIndex }: Theme) =>
   createStyles({
@@ -55,7 +56,6 @@ const Login: React.FC = () => {
   const classes = useStyles();
   const history = useHistory();
   const notice = useNoticeService();
-
   const userModel = useUserModel();
   const form = useRef<InputForm>({ email: "", password: "" });
   const { run, loading } = useRequest(apiUserLogin, {
@@ -74,16 +74,16 @@ const Login: React.FC = () => {
       console.log(error);
       notice({
         type: "SnackBar",
-        snackBarOptions: { ...CustomSnackBar(error.message) },
+        snackBarOptions: { ...CustomSnackBar(error.message, false) },
       });
     },
   });
 
   const onClick = () => {
-    history.push("/home");
+    history.push("/index/home");
 
     // run({
-    //   account: form.current.email,
+    //   email: form.current.email,
     //   password: form.current.password,
     // });
   };
@@ -100,7 +100,7 @@ const Login: React.FC = () => {
         Sign in
       </Typography>
 
-      <div className={classes.form}>
+      <form className={classes.form} onSubmit={onClick}>
         <TextField
           variant="outlined"
           margin="normal"
@@ -127,11 +127,11 @@ const Login: React.FC = () => {
           }}
         />
         <Button
+          type="submit"
           fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
-          onClick={onClick}
         >
           Sign In
         </Button>
@@ -160,7 +160,7 @@ const Login: React.FC = () => {
             </Link>
           </Grid>
         </Grid>
-      </div>
+      </form>
 
       <Box mt={5}>
         <Copyright />{" "}
@@ -170,15 +170,3 @@ const Login: React.FC = () => {
 };
 
 export default Login;
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="#">
-        南开树洞
-      </Link>
-      {" 2021."}
-    </Typography>
-  );
-}

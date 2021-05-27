@@ -6,8 +6,14 @@ import { Utils } from "../utils/func";
 // interface PlainObject {}
 
 export interface UserLoginData {
-  account: string; //手机号或者邮箱
+  email: string; //邮箱
   password: string;
+}
+
+export interface UserRegisterData {
+  email: string; // 邮箱
+  password: string;
+  userName: string;
 }
 
 export const isMockEnv = () => process.env.NODE_ENV !== "production";
@@ -24,6 +30,15 @@ export async function apiUserLogin(data: UserLoginData) {
   return request<UserState>({
     method: setRequestMethod("POST"),
     url: "/user/login",
+    data: data,
+  });
+}
+
+export async function apiUserRegister(data: UserRegisterData) {
+  await Utils.Sleep(500);
+  return request<UserState>({
+    method: setRequestMethod("POST"),
+    url: "/user/register",
     data: data,
   });
 }

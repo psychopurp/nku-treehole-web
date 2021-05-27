@@ -1,3 +1,6 @@
 {
-  "/user/login": "/userLogin"
+  "/user/login": "/login",
+  "/user/register": "/register",
+  "/post/createPost": "/createPost",
+  "/post/getPosts": "/getPosts"
 }

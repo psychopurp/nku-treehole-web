@@ -39,7 +39,7 @@ const routes: IRoute[] = [
       },
       {
         path: "/system/register",
-        component: React.lazy(() => import("../pages/Profile")),
+        component: React.lazy(() => import("../pages/Register")),
       },
     ],
   },
@@ -48,16 +48,22 @@ const routes: IRoute[] = [
     component: React.lazy(() => import("../pages/Welcome")),
   },
   {
+    path: "/post",
+    component: React.lazy(() => import("../pages/Post")),
+  },
+  {
     path: "/",
     component: React.lazy(() => import("../layout/index")),
     redirect: "/index/home",
     children: [
       {
         path: "/index/home",
+        auth: false,
         component: React.lazy(() => import("../pages/Home")),
       },
       {
         path: "/index/profile",
+        auth: false,
         component: React.lazy(() => import("../pages/Profile")),
       },
     ],

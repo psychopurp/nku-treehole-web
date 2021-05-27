@@ -15,6 +15,12 @@
   "homepage": "https://psychopurp.github.io/nku-treehole-web",
   "proxy": "http://localhost:9000/",
   "dependencies": {
+    "@better-scroll/core": "^2.3.1",
+    "@better-scroll/mouse-wheel": "^2.3.1",
+    "@better-scroll/observe-dom": "^2.3.1",
+    "@better-scroll/pull-down": "^2.3.1",
+    "@better-scroll/pull-up": "^2.3.1",
+    "@better-scroll/scroll-bar": "^2.3.1",
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.58",
