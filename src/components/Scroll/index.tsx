@@ -120,7 +120,10 @@ const Scroll: React.FC<ScrollProps> = ({
     <div
       className="scroll-warpper"
       ref={wrapRef}
-      style={{ height: wrapHeight, overflow: "hidden" }}
+      style={{
+        height: wrapHeight,
+        overflow: "hidden",
+      }}
     >
       <div className="scroll-content">{children}</div>
     </div>

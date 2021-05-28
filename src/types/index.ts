@@ -4,7 +4,7 @@ export interface PageQueryParams {
 }
 
 export interface PageResponseData {
-  page: number;
+  page: number; //第几页
   limit: number;
   total: number; //每页数量limit的情况下总共有total 页
 }

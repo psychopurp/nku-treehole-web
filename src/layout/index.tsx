@@ -14,12 +14,12 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import AddIcon from "@material-ui/icons/Add";
 
 const IndexLayout: React.FC = () => {
-  const [value, setValue] = React.useState("/index/home");
   const history = useHistory();
+  const [value, setValue] = React.useState(history.location.pathname);
 
   return (
     <div className={styles.root}>
-      <div style={{ backgroundColor: "Gray", height: "100%" }}>
+      <div className={styles.mainRoot}>
         <MainRoutes />
       </div>
 

@@ -1,5 +1,40 @@
-.scroller {
-    // height: 50vh;
-    height: 400px;
-    background-color: yellow;
+@import "../../config/theme";
+
+
+.root {
+    // background-color: green;
+    display: flex;
+    flex-direction: column;
+
+
+    .appBar {
+        // background-color: blue;
+        // height: 100px;
+    }
+
+
+    .main {
+        // background-color: aqua;
+        margin-top: @appBarHeight+4px;
+    }
+}
+
+
+.postItem {
+    // background-color: yellow;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        // background-color: blue;
+
+        .avatar {
+            margin: 4px 15px 10px 0px;
+        }
+    }
+
+
 }
