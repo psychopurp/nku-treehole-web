@@ -61,14 +61,13 @@ const Login: React.FC = () => {
   const { run, loading } = useRequest(apiUserLogin, {
     manual: true,
     onSuccess: ({ data }, params: [data: UserLoginData]) => {
-      // console.log(data, params);
       userModel.login(data);
       notice({
         type: "SnackBar",
-        snackBarOptions: CustomSnackBar(data.name),
+        snackBarOptions: CustomSnackBar(),
       });
 
-      // history.push("/home");
+      history.push("/index/home");
     },
     onError: (error) => {
       console.log(error);
@@ -80,12 +79,10 @@ const Login: React.FC = () => {
   });
 
   const onClick = () => {
-    history.push("/index/home");
-
-    // run({
-    //   email: form.current.email,
-    //   password: form.current.password,
-    // });
+    run({
+      email: form.current.email,
+      password: form.current.password,
+    });
   };
 
   return (

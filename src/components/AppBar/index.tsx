@@ -24,7 +24,7 @@ const CustomAppBar: React.FC<AppBarProps> = ({ title, ...props }) => {
 
   return (
     <div>
-      <AppBar {...props} className={styles.appbar}>
+      <AppBar {...props} className={styles.appbar} position="relative">
         <Toolbar>
           <Typography variant="subtitle1">{title}</Typography>
         </Toolbar>

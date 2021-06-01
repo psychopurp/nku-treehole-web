@@ -53,7 +53,7 @@ const Register: React.FC = () => {
 
   const onClick = () => {
     run({
-      userName: form.current.userName,
+      username: form.current.userName,
       email: form.current.email,
       password: form.current.password,
     });
@@ -68,7 +68,7 @@ const Register: React.FC = () => {
         <LockOutlinedIcon />
       </Avatar>
       <Typography component="h1" variant="h5">
-        Register
+        Sign up
       </Typography>
 
       <form className={styles.form} onSubmit={onClick}>

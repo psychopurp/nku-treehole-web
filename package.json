@@ -8,12 +8,11 @@
     "test": "node scripts/test.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "mock": "node_modules/.bin/json-server --routes mock/routes.json --watch mock/user.json --port 9000 --watch ",
-    "mockdev": "npm run mock & npm run start",
+    "mock": "node_modules/.bin/json-server --routes mock/routes.json --watch mock/user.json --port 9090 --watch ",
+    "mockdev": "node_modules/.bin/cross-env  REACT_APP_ENV=stage && npm run mock & npm run start",
     "lint": "eslint src --fix"
   },
   "homepage": "https://psychopurp.github.io/nku-treehole-web",
-  "proxy": "http://localhost:9000/",
   "dependencies": {
     "@better-scroll/core": "^2.3.1",
     "@better-scroll/mouse-wheel": "^2.3.1",
@@ -27,6 +26,7 @@
     "ahooks": "^2.10.4",
     "axios": "^0.21.1",
     "hox": "^1.1.4",
+    "http-proxy-middleware": "^2.0.0",
     "js-cookie": "^2.2.1",
     "react": "^17.0.2",
     "react-app-polyfill": "^2.0.0",

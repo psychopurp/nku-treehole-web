@@ -14,10 +14,7 @@ axios.defaults.headers = {
   "Content-Type": "application/json;charset=utf-8",
 };
 
-axios.defaults.baseURL =
-  process.env.NODE_ENV === "production"
-    ? AppConfig.API_URL
-    : "http://localhost:9000/";
+axios.defaults.baseURL = "/api";
 
 // 添加请求拦截器
 axios.interceptors.request.use(

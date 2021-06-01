@@ -9,7 +9,7 @@ export interface User {
   sex: string;
   birthday?: string | null;
   avatar: string | null;
-  phone: string;
+  phone?: string;
   level: number;
 }
 
@@ -27,7 +27,6 @@ const defaultUser: UserState = {
   sex: "男",
   birthday: null,
   avatar: "",
-  phone: "",
   level: 0,
   token: getToken(),
   ...localUser,

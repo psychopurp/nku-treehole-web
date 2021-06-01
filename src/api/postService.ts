@@ -14,14 +14,14 @@ export interface CreatePostData {
 export interface Post {
   postId: number;
   avatar: string;
-  userName: string;
+  username: string;
   userId: string;
-  createAt: string;
+  createdAt: string;
   content: string;
 }
 
 export async function apiCreatePost(data: CreatePostData) {
-  await Utils.Sleep(500);
+  // await Utils.Sleep(500);
   return request<PlainObject>({
     method: setRequestMethod("POST"),
     url: "/post/createPost",
@@ -30,10 +30,10 @@ export async function apiCreatePost(data: CreatePostData) {
 }
 
 export async function apiGetPosts(data: PageQueryParams) {
-  await Utils.Sleep(500);
+  // await Utils.Sleep(500);
   return request<QueryListResponseData<Post>>({
     method: setRequestMethod("GET"),
     url: "/post/getPosts",
-    data: data,
+    params: data,
   });
 }

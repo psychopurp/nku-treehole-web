@@ -58,7 +58,7 @@ const routes: IRoute[] = [
     children: [
       {
         path: "/index/home",
-        auth: false,
+        auth: true,
         component: React.lazy(() => import("../pages/Home")),
       },
       {

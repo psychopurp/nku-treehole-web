@@ -71,3 +71,5 @@ declare module "*.module.sass" {
 }
 
 declare module "*.less";
+
+declare module "react-scroll-mobile";

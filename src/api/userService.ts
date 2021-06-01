@@ -13,10 +13,10 @@ export interface UserLoginData {
 export interface UserRegisterData {
   email: string; // 邮箱
   password: string;
-  userName: string;
+  username: string;
 }
 
-export const isMockEnv = () => process.env.NODE_ENV !== "production";
+export const isMockEnv = () => false;
 
 export const setRequestMethod = (method: Method): Method => {
   if (isMockEnv()) {
@@ -26,7 +26,7 @@ export const setRequestMethod = (method: Method): Method => {
 };
 
 export async function apiUserLogin(data: UserLoginData) {
-  await Utils.Sleep(500);
+  // await Utils.Sleep(500);
   return request<UserState>({
     method: setRequestMethod("POST"),
     url: "/user/login",
@@ -35,7 +35,7 @@ export async function apiUserLogin(data: UserLoginData) {
 }
 
 export async function apiUserRegister(data: UserRegisterData) {
-  await Utils.Sleep(500);
+  // await Utils.Sleep(500);
   return request<UserState>({
     method: setRequestMethod("POST"),
     url: "/user/register",

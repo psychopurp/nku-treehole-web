@@ -60,10 +60,7 @@ const Scroll: React.FC<ScrollProps> = ({
           stop: 0,
         },
         //  上拉加载更多
-        pullUpLoad: {
-          threshold: 90,
-          stop: 10,
-        },
+        pullUpLoad: true,
       })
     );
   };
@@ -89,6 +86,7 @@ const Scroll: React.FC<ScrollProps> = ({
 
   //  上拉加载
   const pullup = async () => {
+    console.log("pulling");
     onPullup && (await onPullup());
     setTimeout(() => {
       scrollObj?.finishPullUp();
@@ -122,7 +120,8 @@ const Scroll: React.FC<ScrollProps> = ({
       ref={wrapRef}
       style={{
         height: wrapHeight,
-        overflow: "hidden",
+        overflow: "auto",
+        position: "relative",
       }}
     >
       <div className="scroll-content">{children}</div>
