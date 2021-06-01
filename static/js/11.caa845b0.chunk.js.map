@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/Home/index.tsx"],"names":["Home"],"mappings":"+IAMeA,UAJQ,WACrB,OAAO","file":"static/js/11.caa845b0.chunk.js","sourcesContent":["export interface HomeProps {}\n\nconst Home: React.FC = () => {\n  return <div>home</div>;\n};\n\nexport default Home;\n"],"sourceRoot":""}

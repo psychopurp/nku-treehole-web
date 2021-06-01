@@ -1,1 +1,0 @@
-{"version":3,"sources":["pages/Profile/index.tsx"],"names":["Profile"],"mappings":"8IAMeA,UAJW,WACxB,OAAO","file":"static/js/2.f6d9eb19.chunk.js","sourcesContent":["export interface ProfileProps {}\n\nconst Profile: React.FC = () => {\n  return <div>Profile</div>;\n};\n\nexport default Profile;\n"],"sourceRoot":""}

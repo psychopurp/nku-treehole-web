@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/pages/Profile/index.module.less"],"names":[],"mappings":"AAAA,qBACI,cAAA,CACA,WACJ","file":"13.424e63ba.chunk.css","sourcesContent":[".appbar {\n    position: fixed;\n    bottom: 40px;\n}"]}

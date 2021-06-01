@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/components/CustomSnackBar/index.module.less"],"names":[],"mappings":"AAAA,mBACE,UAAA,CACA,iBACF","file":"12.b1262457.chunk.css","sourcesContent":[".root {\n  width: 80vw;\n  margin-bottom: 5vw;\n}\n\n"]}
