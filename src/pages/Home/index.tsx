@@ -15,7 +15,7 @@ export interface HomeProps {}
 
 const Home: React.FC = () => {
   const [dataList, setDataList] = useState<Post[]>([]);
-  const [page, setPage] = useState<number>(0);
+  const page = useRef<number>(0);
   const [noMore, setNoMore] = useState<boolean>(false);
   const notice = useNoticeService();
 
@@ -23,14 +23,12 @@ const Home: React.FC = () => {
     manual: true,
     onSuccess: ({ data }, params: [param: PageQueryParams]) => {
       setDataList(dataList.concat(data.list));
-
-      if (page + 1 < data.total) {
-        setPage(page + 1);
+      if (page.current + 1 < data.total) {
+        page.current++;
       } else {
         setNoMore(true);
         console.log("set nomore");
       }
-      // console.log(data, params, page, dataList);
     },
     onError: (error) => {
       console.log(error);
@@ -43,23 +41,22 @@ const Home: React.FC = () => {
 
   const onPullup = async () => {
     console.log("onpullup");
-    // setPage(1);
-    // await Utils.Sleep(5000);
-    // await run({ page: page, limit: 20 });
+    await run({ page: page.current, limit: 10 });
   };
   const onPullDown = async () => {
-    console.log("pulldown");
-    setPage(0);
-    await run({ page: page, limit: 20 });
-    // await Utils.Sleep(5000);
+    setDataList([]);
+    setNoMore(false);
+    page.current = 0;
+    console.log("pulldown page ", page);
+    await run({ page: page.current, limit: 10 });
   };
 
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     console.log("using effect");
-    run({ page: page, limit: 20 });
-  }, [page, run]);
+    run({ page: 0, limit: 10 });
+  }, [run]);
 
   return (
     <div className={styles.root}>

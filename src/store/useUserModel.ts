@@ -17,7 +17,7 @@ export interface UserState extends User {
   token: string;
 }
 
-const USER_KEY = "NKU-Treehole-User";
+export const USER_KEY = "NKU-Treehole-User";
 
 const localUser = LocalStore.getValue<UserState>(USER_KEY) || {};
 

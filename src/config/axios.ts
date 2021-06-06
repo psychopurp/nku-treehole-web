@@ -1,6 +1,8 @@
 import axios, { AxiosRequestConfig, AxiosError, AxiosResponse } from "axios";
 import AppConfig from ".";
-import { getToken } from "../utils/cookie";
+import { getToken, removeToken } from "../utils/cookie";
+import LocalStore from "../utils/store";
+import { USER_KEY } from "../store/useUserModel";
 
 export interface ResponseData<T> {
   code: number;
@@ -39,21 +41,12 @@ axios.interceptors.response.use(
 
     // 登录已过期或者未登录
     if (response.data.code === AppConfig.LOGIN_EXPIRE) {
-      //   Modal.confirm({
-      //     title: "系统提示",
-      //     content: response.data.msg,
-      //     okText: "重新登录",
-      //     onOk() {
-      //       store.dispatch(clearSideBarRoutes());
-      //       store.dispatch(logout());
-      //       window.location.href = `${
-      //         window.location.origin
-      //       }/react-ant-admin/system/login?redirectURL=${encodeURIComponent(
-      //         window.location.href
-      //       )}`;
-      //     },
-      //     onCancel() {},
-      //   });
+      removeToken();
+      LocalStore.removeValue(USER_KEY);
+      console.log(window.location);
+      window.location.href = `${window.location.origin}${
+        window.location.pathname
+      }/system/login?redirectURL=${encodeURIComponent(window.location.href)}`;
 
       return Promise.reject(new Error(response.data.msg));
     }

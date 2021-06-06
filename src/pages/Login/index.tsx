@@ -66,8 +66,14 @@ const Login: React.FC = () => {
         type: "SnackBar",
         snackBarOptions: CustomSnackBar(),
       });
+      // const url = new URLSearchParams(window.location.search);
+      // const redirectURL = url.get("redirectURL");
+      // if (redirectURL) {
+      //   window.location.href = redirectURL;
+      //   return;
+      // }
 
-      history.push("/index/home");
+      history.push("/");
     },
     onError: (error) => {
       console.log(error);
