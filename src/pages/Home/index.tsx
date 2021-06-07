@@ -18,6 +18,7 @@ const Home: React.FC = () => {
   const page = useRef<number>(0);
   const [noMore, setNoMore] = useState<boolean>(false);
   const notice = useNoticeService();
+  const LIMIT = 10;
 
   const { run, loading } = useRequest(apiGetPosts, {
     manual: true,
@@ -41,21 +42,21 @@ const Home: React.FC = () => {
 
   const onPullup = async () => {
     console.log("onpullup");
-    await run({ page: page.current, limit: 10 });
+    await run({ page: page.current, limit: LIMIT });
   };
   const onPullDown = async () => {
     setDataList([]);
     setNoMore(false);
     page.current = 0;
     console.log("pulldown page ", page);
-    await run({ page: page.current, limit: 10 });
+    await run({ page: page.current, limit: LIMIT });
   };
 
   const wrapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     console.log("using effect");
-    run({ page: 0, limit: 10 });
+    run({ page: 0, limit: LIMIT });
   }, [run]);
 
   return (
